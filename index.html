@@ -52,8 +52,13 @@
       </div>
 
       <button onclick="copyListToClipboard()" 
-              class="w-full bg-blue-600 hover:bg-blue-700 py-6 rounded-3xl text-lg font-medium mb-8 flex items-center justify-center gap-3">
+              class="w-full bg-blue-600 hover:bg-blue-700 py-6 rounded-3xl text-lg font-medium mb-4 flex items-center justify-center gap-3">
         <i class="fas fa-copy"></i> Copy List to Clipboard
+      </button>
+
+      <button onclick="goToGitHubEdit()" 
+              class="w-full bg-zinc-700 hover:bg-zinc-600 py-6 rounded-3xl text-lg font-medium mb-8 flex items-center justify-center gap-3">
+        <i class="fas fa-github"></i> Edit File on GitHub
       </button>
 
       <button onclick="addMainTheme()" class="w-full bg-emerald-600 py-6 rounded-3xl mb-8 text-xl">
@@ -65,12 +70,21 @@
   </div>
 
   <script>
-        let themes = [
-      { name: "Anywhere but here", subs: ["Our Bedroom", "Our House", "Indoors"] },
-      { name: "New to us", subs: ["Position", "Place", "Wildcard - Anything we've never done"] }
+    let themes = [
+      { name: "Not Here", subs: ["Our House", "Our Bedroom", "Indoors", "Backyard", "Hotel", "Cabin"] },
+      { name: "Romantic", subs: ["Candlelight", "Slow & Sensual", "Passionate", "Teasing"] },
+      { name: "Playful", subs: ["Roleplay", "Games", "Light Bondage", "Tickling"] },
+      { name: "Power Exchange", subs: ["Dominant", "Submissive", "Switch"] },
+      { name: "Quick & Hot", subs: [] },
+      { name: "Sensual Massage", subs: [] },
+      { name: "Oral Focus", subs: ["Giving", "Receiving", "69"] }
     ];
 
     let currentTheme = null;
+
+    function goToGitHubEdit() {
+      window.open('https://github.com/jasonhargrave-ship-it/thelist/edit/main/index.html', '_blank');
+    }
 
     function copyListToClipboard() {
       let output = "    let themes = [\n";
@@ -88,7 +102,7 @@
       output += "    ];";
 
       navigator.clipboard.writeText(output).then(() => {
-        alert("✅ List copied to clipboard!\n\nPaste it into the HTML file where it says 'let themes = [...]'");
+        alert("✅ List copied!\n\nNow click 'Edit File on GitHub' and paste this over the old themes array.");
       });
     }
 
